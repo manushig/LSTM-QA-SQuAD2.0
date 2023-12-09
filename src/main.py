@@ -1,5 +1,5 @@
-from src.interface import QuestionAnsweringBotInterface
-from src.preprocessing import DataPreprocessor
+from interface import QuestionAnsweringBotInterface
+from preprocessing import DataPreprocessor
 from seq2seq import Training
 from inference import Inference
 import matplotlib.pyplot as plt
