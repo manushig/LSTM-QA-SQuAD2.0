@@ -32,12 +32,22 @@ Before running the code, ensure you have the following installed:
 ## Usage
 To use the system, follow these steps:
 
-1. Run main.py to preprocess data, train, test, and interact with the model.
+1. Navigate to the src directory:
+   ```bash
+   cd src
+
+2. Run main.py to preprocess data, train, test, and interact with the model.
    
    ```python
    python main.py
    ```
-   
+
+  Alternatively, if you are in the project root directory, you can run:
+ 
+   ```python
+   python src/main.py
+   ```
+
 ## Execution Process
 To run the system, execute `main.py` which encompasses the following stages:
 
