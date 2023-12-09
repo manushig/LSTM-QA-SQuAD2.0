@@ -42,7 +42,7 @@ To use the system, follow these steps:
 ## Execution Process
 To run the system, execute `main.py` which encompasses the following stages:
 
-1. **Data Preprocessing**: The script begins with data preprocessing using `data_utils.py`. This step includes cleaning and structuring the dataset for model training.
+1. **Data Preprocessing**: The script begins with data preprocessing using `preprocessing.py`. This step includes cleaning and structuring the dataset for model training.
 
 2. **Model Training and Cross-Validation**: Next, the LSTM Seq2Seq model defined in `seq2seq.py` is trained. It includes a cross-validation process to ensure model robustness and accuracy. This stage involves the learning process where the model adapts to answer questions based on the SQuAD 2.0 dataset.
 
@@ -55,7 +55,7 @@ The script processes the SQuAD v2.0 dataset, which can be downloaded automatical
 
 ## Components
 - `main.py`: Orchestrates the workflow, including data preprocessing, model training, evaluation, and launching the user interface.
-- `data_utils.py`: Handles data preprocessing, including cleaning, tokenization, and preparing the SQuAD 2.0 dataset for the LSTM model.
+- `preprocessing.py`: Handles data preprocessing, including cleaning, tokenization, and preparing the SQuAD 2.0 dataset for the LSTM model.
 - `seq2seq.py`: Defines the LSTM Seq2Seq model architecture, incorporating attention mechanisms for improved performance.
 - `inference.py`: Facilitates model inference, generating answers to user-posed questions based on the trained model.
 - `interface.py`: Provides a graphical user interface (GUI) using Tkinter for easy interaction with the question-answering system.
