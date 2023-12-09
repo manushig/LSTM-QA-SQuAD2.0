@@ -1,18 +1,18 @@
 import ast
 import os
 import pickle
-import re
-import logging
 import pandas as pd
 import numpy as np
 from typing import Tuple, Dict, List
 from datasets import load_dataset
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
+from utils.data_utils import normalize_text
 
 
 class DataPreprocessor:
-    def __init__(self, data_limit: int = 10000, data_folder: str = "../data/train", data_name: str = "SquadDataset.csv"):
+    def __init__(self, data_limit: int = 10000, data_folder: str = "../data/train",
+                 data_name: str = "SquadDataset.csv"):
         """
         Initializes the DataPreprocessor class with specified parameters.
 
@@ -112,57 +112,15 @@ class DataPreprocessor:
             print(f"Error handling missing data or extracting answers: {e}")
             raise
 
-    def _normalize_text(self, text: str) -> str:
-        """
-        Normalizes and cleans the text data.
-
-        Parameters:
-        text (str): The text to be normalized and cleaned.
-
-        Returns:
-        str: The normalized and cleaned text.
-        """
-        try:
-            # Dictionary of replacements for text normalization
-            replacements = {
-                "there's": "there is",
-                "i'm": "i am",
-                "he's": "he is",
-                "she's": "she is",
-                "it's": "it is",
-                "that's": "that is",
-                "what's": "that is",
-                "where's": "where is",
-                "how's": "how is",
-                "\'ll": " will",
-                "\'ve": " have",
-                "\'re": " are",
-                "\'d": " would",
-                "won't": "will not",
-                "can't": "cannot",
-                "n't": " not",
-                "n'": "ng",
-                "'bout": "about",
-                "'til": "until"
-            }
-            compiled_replacements = {re.compile(rf"\b{k}\b"): v for k, v in replacements.items()}
-            for pattern, repl in compiled_replacements.items():
-                text = pattern.sub(repl, text)
-            text = re.sub(r"[-()\"#/@;:<>{}`+=~|.!?,]", "", text)
-            return text.strip().lower()
-        except Exception as e:
-            print(f"Error normalizing text: {e}")
-            return text
-
     def _preprocess_text_columns(self):
         """
         Preprocesses the main text columns ('question' and 'answers') and saves the processed data.
         """
         try:
             self.data_frame = self.data_frame[["question", "answers"]]
-            self.data_frame["question"] = self.data_frame["question"].apply(self._normalize_text)
+            self.data_frame["question"] = self.data_frame["question"].apply(normalize_text)
             self.data_frame["answers"] = self.data_frame["answers"].apply(
-                lambda x: f'<start> {self._normalize_text(x)} <end>')
+                lambda x: f'<start> {normalize_text(x)} <end>')
             self.data_frame = self.data_frame.iloc[:self.data_limit]
             self.data_frame.to_csv(self.final_data_path)
         except Exception as e:
