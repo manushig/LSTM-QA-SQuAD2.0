@@ -21,9 +21,11 @@ def main():
 
         # Model training and cross-validation
         training = Training()
+
         avg_accuracy, avg_loss = training.cross_validate(num_input_tokens, num_output_tokens,
                                                          encoder_input_data, decoder_input_data,
                                                          decoder_target_data, k=5)
+
         encoder_model, decoder_model = training.train_model(num_input_tokens, num_output_tokens,
                                                             encoder_input_data, decoder_input_data,
                                                             decoder_target_data)
@@ -66,9 +68,10 @@ def plot_cross_validation_results(file_path):
     plt.ylabel('Loss')
 
     plt.tight_layout()
+    plt.savefig('../image/crossvalidation.png')
     plt.show()
 
 
 if __name__ == "__main__":
     main()
-    # plot_cross_validation_results('../data/cross_validation_results.csv')
+    plot_cross_validation_results('../data/cross_validation_results.csv')
