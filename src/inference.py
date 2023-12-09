@@ -126,5 +126,4 @@ class Inference:
         # Pad the sequence to the fixed size used during training
         padded_sequence = pad_sequences(sequence, maxlen=self.max_input_seq_len, padding='post')
 
-        print(f"Preprocessed input shape: {padded_sequence.shape}")  # Should match training input shape
         return padded_sequence
