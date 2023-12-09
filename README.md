@@ -32,8 +32,7 @@ Before running the code, ensure you have the following installed:
 ## Usage
 To use the system, follow these steps:
 
-1. Set up config.yaml.
-2. Run main.py to preprocess data, train, test, and interact with the model.
+1. Run main.py to preprocess data, train, test, and interact with the model.
    
    ```python
    python main.py
@@ -59,11 +58,6 @@ The script processes the SQuAD v2.0 dataset, which can be downloaded automatical
 - `seq2seq.py`: Defines the LSTM Seq2Seq model architecture, incorporating attention mechanisms for improved performance.
 - `inference.py`: Facilitates model inference, generating answers to user-posed questions based on the trained model.
 - `interface.py`: Provides a graphical user interface (GUI) using Tkinter for easy interaction with the question-answering system.
-
-## Configuration
-Modify the `config.yaml` to adjust the following settings:
-- Data limits, folder paths, and file names.
-- Model file names for saving post-training.
 
 ## Contact
 For inquiries or contributions, feel free to reach out to any of our team members:
