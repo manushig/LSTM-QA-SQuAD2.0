@@ -1,4 +1,3 @@
-import os
 from src.interface import QuestionAnsweringBotInterface
 from src.preprocessing import DataPreprocessor
 from seq2seq import Training
@@ -14,11 +13,6 @@ def main():
     retrieves training parameters.
     """
     try:
-
-        # Configuration setup
-        config_directory = os.path.join(os.path.dirname(__file__), '..', 'config')
-        config_file_path = os.path.join(config_directory, 'config.yaml')
-
         # Data preprocessing
         preprocessor = DataPreprocessor()
         preprocessor.execute_preprocessing()
@@ -40,7 +34,7 @@ def main():
                                        max_input_seq_len, output_word_dict, max_output_len, latent_dim=128)
 
         # User interface launch
-        interface = QuestionAnsweringBotInterface(response_predictor, config_file_path)
+        interface = QuestionAnsweringBotInterface(response_predictor)
         interface.launch()
     except Exception as e:
         print(f"An error occurred: {e}")
