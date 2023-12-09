@@ -190,6 +190,10 @@ class Training:
         Returns:
             Tuple[float, float]: Average accuracy and loss across all folds.
         """
+        # Check if the model already exists
+        if os.path.exists(self.model_path):
+            return None, None
+
         kf = KFold(n_splits=k, shuffle=True)
         accuracies = []
         losses = []
