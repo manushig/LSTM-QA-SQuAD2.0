@@ -3,6 +3,10 @@
 ## Overview
 This project develops an advanced LSTM-based Question Answering system using the SQuAD 2.0 dataset. It features a comprehensive approach encompassing data preprocessing, LSTM Seq2Seq model implementation, rigorous evaluation, and an intuitive GUI for user interaction.
 
+## Demo Video
+
+- [LSTM-Based QA System Demo](https://www.youtube.com/watch?v=JMCNrFbJeAI&ab_channel=AmeyaSGidh) - Watch an advanced LSTM-based Question Answering system using the SQuAD 2.0 dataset.
+ 
 ## Features
 - Employs the complex SQuAD 2.0 dataset, including unanswerable questions for a realistic challenge.
 - Implements an LSTM Seq2Seq model with attention mechanisms for accurate response generation.
